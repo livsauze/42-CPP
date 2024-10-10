@@ -6,7 +6,7 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:35:43 by livsauze          #+#    #+#             */
-/*   Updated: 2024/10/08 16:36:49 by livsauze         ###   ########.fr       */
+/*   Updated: 2024/10/10 16:00:18 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <iomanip>
+# include <limits>
 # include <string>
 
 # include "Contact.hpp"
@@ -25,6 +26,7 @@ class PhoneBook
 	private:
 		Contact	contacts[CONTACT_NB];
 		int		contactCount;
+		int		oldestContact;
 		
 	public:
 		PhoneBook(void);

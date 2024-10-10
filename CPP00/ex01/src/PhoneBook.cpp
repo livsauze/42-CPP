@@ -6,13 +6,13 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:34:49 by livsauze          #+#    #+#             */
-/*   Updated: 2024/10/10 13:18:40 by livsauze         ###   ########.fr       */
+/*   Updated: 2024/10/10 16:02:43 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/PhoneBook.hpp"
 
-PhoneBook::PhoneBook() : contactCount(0) {}
+PhoneBook::PhoneBook() : contactCount(0), oldestContact(0) {}
 
 PhoneBook::~PhoneBook()
 {
@@ -26,7 +26,12 @@ void	PhoneBook::addContact(Contact& contact)
 		contactCount++;
 	}
 	else if (contactCount == CONTACT_NB)
-		contacts[0] = contact;
+	{
+		contacts[oldestContact] = contact;
+		oldestContact += 1;
+		if (oldestContact == CONTACT_NB)
+		oldestContact = 0;
+	}
 }
 void PhoneBook::printContacts()
 {
@@ -39,7 +44,6 @@ void PhoneBook::printContacts()
 void	PhoneBook::searchContact()
 {
 	int		index;
-	std::string index_s;
 	if (contactCount == 0)
 	{
 		std::cout << "No contact available, please ADD a contact" << std::endl;
@@ -49,13 +53,17 @@ void	PhoneBook::searchContact()
 	std::cout << "Please enter an index" << std::endl;
 	while (!(std::cin >> index) || index < 1 || index > contactCount || std::cin.peek() != '\n')
 	{
-		if (!std::getline(std::cin, index_s))
+		if (std::cin.eof())  // Détecter si Ctrl-D a été pressé
 		{
-			std::cout << "EOF detected." << std::endl;
+			std::cout << "EOF detected. Exiting search." << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			return ;
 		}
-		std::cout << "Index invalid, please enter a number between 1 and "<<contactCount<< "";
-		std::cin.clear();
+		
+			std::cout << "Index invalid, please enter a number between 1 and "<<contactCount<< "" << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
 	contacts[index - 1].printContact();
 }
