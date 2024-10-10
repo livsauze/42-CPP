@@ -6,7 +6,7 @@
 #    By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/06 10:36:25 by livsauze          #+#    #+#              #
-#    Updated: 2024/09/06 13:49:21 by livsauze         ###   ########.fr        #
+#    Updated: 2024/09/25 19:26:36 by livsauze         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ FLAGS = -Wall -Werror -Wextra  -std=c++98
 INC = -I ./includes/
 
 SRCS_dir := src
-SRCS := src/PhoneBook.cpp
+SRCS := src/main.cpp src/PhoneBook.cpp src/Contact.cpp
 
 OBJS_DIR := obj
 OBJS := $(patsubst $(SRCS_DIR)/%.cpp, $(OBJS_DIR)/%.o, $(SRCS))
@@ -41,7 +41,7 @@ ${NAME} : $(OBJS)
 all : ${NAME}
 
 clean :
-	@rm -f $(OBJS_DIR)
+	@rm -rf $(OBJS_DIR)
 	@echo "$(RED)Deleting object files\n"
 
 fclean : clean
