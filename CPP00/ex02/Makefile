@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/09/06 10:36:25 by livsauze          #+#    #+#              #
-#    Updated: 2024/10/10 16:25:47 by livsauze         ###   ########.fr        #
+#    Created: 2024/10/10 16:19:08 by livsauze          #+#    #+#              #
+#    Updated: 2024/10/11 17:49:18 by livsauze         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,15 +16,15 @@ YELLOW = \033[33m
 GREEN = \033[92m
 #****************************************#
 
-NAME = phonebook
+NAME = account
 
 CC = c++
-FLAGS = -Wall -Werror -Wextra  -std=c++98
+FLAGS = -Wall -Werror -Wextra -std=c++98
 
 INC = -I ./includes/
 
 SRCS_DIR := src
-SRCS := src/main.cpp src/PhoneBook.cpp src/Contact.cpp
+SRCS := src/tests.cpp src/Account.cpp
 
 OBJS_DIR := obj
 OBJS := $(patsubst $(SRCS_DIR)/%.cpp, $(OBJS_DIR)/%.o, $(SRCS))
