@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/09/06 10:36:25 by livsauze          #+#    #+#              #
-#    Updated: 2024/10/19 15:02:53 by livsauze         ###   ########.fr        #
+#    Created: 2024/10/19 16:40:16 by livsauze          #+#    #+#              #
+#    Updated: 2024/10/19 17:34:26 by livsauze         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,15 +16,15 @@ YELLOW = \033[33m
 GREEN = \033[92m
 #****************************************#
 
-NAME = megaphone
+NAME = fixed
 
 CC = c++
-FLAGS = -Wall -Werror -Wextra  -std=c++98
+FLAGS = -Wall -Werror -Wextra -std=c++98
 
 INC = -I ./includes/
 
 SRCS_DIR := src
-SRCS := src/Megaphone.cpp src/main.cpp
+SRCS := src/main.cpp src/Fixed.cpp
 
 OBJS_DIR := obj
 OBJS := $(patsubst $(SRCS_DIR)/%.cpp, $(OBJS_DIR)/%.o, $(SRCS))
