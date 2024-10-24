@@ -6,7 +6,7 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 17:27:09 by livsauze          #+#    #+#             */
-/*   Updated: 2024/10/23 14:28:17 by livsauze         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:51:12 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,5 @@ int	Fixed::toInt(void) const
 
 float Fixed::toFloat(void) const
 {
-	return ((this->value) / (1 << bits));
+	return (static_cast<float>(this->value) / (1 << bits));
 }
