@@ -6,7 +6,7 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 16:41:37 by livsauze          #+#    #+#             */
-/*   Updated: 2024/10/23 14:12:33 by livsauze         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:01:15 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 #include <string>
-#include <math.h>
+#include <cmath>
 
 	class Fixed
 	{
