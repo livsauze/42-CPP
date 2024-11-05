@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   FlagTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/03 17:52:42 by livsauze          #+#    #+#             */
-/*   Updated: 2024/11/05 17:12:38 by livsauze         ###   ########.fr       */
+/*   Created: 2024/11/05 16:34:06 by livsauze          #+#    #+#             */
+/*   Updated: 2024/11/05 17:16:31 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _SCAVTRAP_HPP
-#define _SCAVTRAP_HPP
+#ifndef _FLAGTRAP_HPP
+#define _FLAGTRAP_HPP
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
-class ScavTrap : public ClapTrap
+class FlagTrap : public ClapTrap
 {
+
 	public:
-		ScavTrap(const std::string& name);
-		ScavTrap(const ScavTrap& other);
-		ScavTrap &operator=(const ScavTrap& other);
-		~ScavTrap();
-		void attack(const std::string& target);
-		void guardGate();
+		FlagTrap(const std::string& name);
+		FlagTrap(const FlagTrap& other);
+		FlagTrap& operator=(const FlagTrap &other);
+		~FlagTrap();
+		void	attack(const std::string& target);
+		void	highFivesGuys(void);
 };
 
 #endif

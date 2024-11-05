@@ -6,7 +6,7 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:04:54 by livsauze          #+#    #+#             */
-/*   Updated: 2024/11/05 17:13:04 by livsauze         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:21:03 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,17 @@ ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name)
 
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
 {
-	std::cout << "ScavTrap " << this->_name <<  " is copied" << std::endl;
+	std::cout << "ScavTrap " << other._name <<  " is copied" << std::endl;
 
 }
 
-ScavTrap &ScavTrap::operator=(const ScavTrap &other)
+ScavTrap& ScavTrap::operator=(const ScavTrap &other)
 {
 	ClapTrap::operator=(other);
-	std::cout << "ScavTrap " << this->_name << " has been assigned with = operator." << std::endl;
+	std::cout << "ScavTrap " << this->_name << " has been assigned" << std::endl;
 	return (*this);
 }
+
 
 ScavTrap::~ScavTrap()
 {
