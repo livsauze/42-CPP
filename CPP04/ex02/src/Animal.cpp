@@ -6,7 +6,7 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:37:20 by livsauze          #+#    #+#             */
-/*   Updated: 2025/01/08 16:08:54 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:01:29 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ Animal& Animal::operator=(const Animal& other)
 	{
 		_type = other.getType();
 	}
-	std::cout << "Assignment operator called" << std::endl;	
 	return *this;
 }
 

@@ -1,48 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 14:25:31 by livsauze          #+#    #+#             */
-/*   Updated: 2025/01/08 15:35:33 by livsauze         ###   ########.fr       */
+/*   Created: 2024/11/26 17:40:50 by livsauze          #+#    #+#             */
+/*   Updated: 2024/12/09 15:39:15 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongCat.hpp"
 
-Dog::Dog() : Animal("Dog")
+WrongCat::WrongCat() : WrongAnimal("WrongCat")
 {
-	std::cout << "Dog has been created" << std::endl;
-	_brain = new Brain();
-
+	std::cout << "WrongCat has been created" << std::endl;
 }
 
-Dog::Dog(const Dog& other) : Animal(other), _brain(new Brain(*other._brain))
+
+WrongCat::WrongCat(const WrongCat& other) : WrongAnimal(other)
 {
 	std::cout << "Animal of type  " << other._type <<  " is copied" << std::endl;
 }
 
-Dog& Dog::operator=(const Dog& other)
+WrongCat& WrongCat::operator=(const WrongCat& other)
 {
 	if (this != &other)
 	{
-		Animal::operator=(other);
+		WrongAnimal::operator=(other);
 	}
-	delete this->_brain;
-        this->_brain = new Brain(*other._brain);
 	std::cout << "Assignment operator called" << std::endl;	
 	return *this;
 }
 
-Dog::~Dog()
+WrongCat::~WrongCat()
 {
-	delete _brain;
-	std::cout << "The Dog has been destroyed" << std::endl;
+	std::cout << "The WrongCat has been destroyed" << std::endl;
 }
 
-void	Dog::makeSound() const
+void	WrongCat::makeSound() const
 {
-	std::cout << "WOAF WOAf Woaf woaf" << std::endl;
+	std::cout << "Woaf woaf....... Sound weird" << std::endl;
 }

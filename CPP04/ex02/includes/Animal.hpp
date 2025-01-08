@@ -6,7 +6,7 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:31:03 by livsauze          #+#    #+#             */
-/*   Updated: 2025/01/08 16:08:48 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:00:32 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Animal
 		Animal& operator=(const Animal& other);
 		virtual ~Animal();
 		std::string getType() const;
-		virtual void	makeSound() const;
+		virtual void	makeSound() const = 0;
 };
 
 #endif
