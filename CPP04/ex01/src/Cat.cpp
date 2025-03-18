@@ -6,7 +6,7 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:35:25 by livsauze          #+#    #+#             */
-/*   Updated: 2025/01/08 15:35:07 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:53:53 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,12 @@ Cat::Cat(void) : Animal("Cat")
 
 Cat::Cat(const Cat& other) : Animal(other), _brain(new Brain(*other._brain))
 {
-	std::cout << "Animal of type  " << other._type <<  " is copied" << std::endl;
 }
 
 Cat& Cat::operator=( const Cat& other ) {
     if (this != &other) {
         Animal::operator=(other);
-        delete this->_brain;
-        this->_brain = new Brain(*other._brain);
+        this->_brain = other._brain;
     }
     return *this;
 }

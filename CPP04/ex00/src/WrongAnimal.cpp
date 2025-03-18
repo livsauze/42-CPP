@@ -6,7 +6,7 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:39:32 by livsauze          #+#    #+#             */
-/*   Updated: 2024/12/09 15:43:54 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:09:41 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ std::string WrongAnimal::getType() const
 
 void	WrongAnimal::makeSound() const
 {
-	std::cout << "Some ****Noise****" << std::endl;
+	std::cout << "Some ****Weird Noise****" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:40:50 by livsauze          #+#    #+#             */
-/*   Updated: 2024/12/09 15:43:58 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:10:58 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,4 @@ WrongCat& WrongCat::operator=(const WrongCat& other)
 WrongCat::~WrongCat()
 {
 	std::cout << "The WrongCat has been destroyed" << std::endl;
-}
-
-void	WrongCat::makeSound() const
-{
-	std::cout << "Woaf woaf....... Sound weird" << std::endl;
 }

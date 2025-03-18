@@ -6,7 +6,7 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 17:18:49 by livsauze          #+#    #+#             */
-/*   Updated: 2024/12/09 15:05:55 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:49:12 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ Brain::Brain( void ) {
 }
 
 Brain::Brain( const Brain& other ) {
-    *this = other;
+    for (int i = 0; i < 100; ++i) {
+        this->_ideas[i] = other._ideas[i];
+    }
+	std::cout << "Brain copy" << std::endl;
 }
 
 Brain& Brain::operator=( const Brain& other ) {

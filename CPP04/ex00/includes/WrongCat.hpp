@@ -6,7 +6,7 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:35:22 by livsauze          #+#    #+#             */
-/*   Updated: 2024/12/09 15:41:11 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:10:40 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class WrongCat : public WrongAnimal
 		WrongCat(const WrongCat& other);
 		WrongCat& operator=(const WrongCat& other);
 		~WrongCat();
-		void makeSound() const;
 };
 
 #endif
