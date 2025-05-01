@@ -6,7 +6,7 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 18:34:50 by livsauze          #+#    #+#             */
-/*   Updated: 2025/05/01 18:38:45 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/05/01 19:56:58 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ class Bureaucrat
 		std::string getName() const;
 		void	incrementGrade();
 		void	decrementGrade();
+		void	incrementGrades(int newGrade);
+		void	decrementGrades(int newGrade);
 		void	signForm(AForm& form);
 		void	executeForm(AForm const & form);
 		

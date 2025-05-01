@@ -6,7 +6,7 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 18:36:39 by livsauze          #+#    #+#             */
-/*   Updated: 2025/05/01 18:45:01 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/05/01 19:59:24 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,22 @@ void	Bureaucrat::decrementGrade()
 		throw GradeTooLowException();
 	else
 		_grade++;
+}
+
+void	Bureaucrat::incrementGrades(int newGrade)
+{
+	if (_grade <= 1)
+		throw GradeTooHighException();
+	else
+		_grade -= newGrade;
+}
+
+void	Bureaucrat::decrementGrades(int newGrade)
+{
+	if (_grade >= 150)
+		throw GradeTooLowException();
+	else
+		_grade += newGrade;
 }
 
 void	Bureaucrat::signForm(AForm& form)
