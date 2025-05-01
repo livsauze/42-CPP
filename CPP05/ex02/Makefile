@@ -6,7 +6,7 @@
 #    By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/25 12:24:58 by livsauze          #+#    #+#              #
-#    Updated: 2025/04/28 15:03:36 by livsauze         ###   ########.fr        #
+#    Updated: 2025/05/01 18:26:01 by livsauze         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ FLAGS = -Wall -Werror -Wextra -std=c++98
 INC = -I ./includes/
 
 SRCS_DIR := src
-SRCS := src/main.cpp src/Bureaucrat.cpp src/AForm.cpp
+SRCS := src/main.cpp src/Bureaucrat.cpp src/AForm.cpp src/ShrubberyCreationForm.cpp \
+	src/RobotomyRequestForm.cpp src/PresidentialPardonForm.cpp
 
 OBJS_DIR := obj
 OBJS := $(patsubst $(SRCS_DIR)/%.cpp, $(OBJS_DIR)/%.o, $(SRCS))

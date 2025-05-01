@@ -6,44 +6,44 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 18:31:14 by livsauze          #+#    #+#             */
-/*   Updated: 2025/04/28 16:06:01 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/05/01 18:43:29 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
-int	main() {
+
+int	main()
+{
 	try {
-		Bureaucrat	Clement("Clement", 30);
-		std::cout << Clement << std::endl;
-		AForm	Contract("Contract 1", 50, 130);
-		std::cout << Contract << std::endl;
+		Bureaucrat boss("Alice", 1); // grade max
+		Bureaucrat employee("Bob", 70);
+		Bureaucrat intern("Charlie", 150); // grade min
 
-		Clement.incrementGrade();
-		std::cout << Clement << std::endl;
-		Clement.signForm(Contract);
-		std::cout << Contract << std::endl;
-		Clement.signForm(Contract);
-	}
-	catch (const std::exception& e) { 
-		std::cerr << "Exception caught: " << e.what() << std::endl;
-	}
-	std::cout << "------------- GRADE TOO LOW -------------" << std::endl;
-	try {
-		Bureaucrat	Peter("Peter", 120);
-		std::cout << Peter << std::endl;
-		AForm	Contract("Contract 2", 100, 140);
-		std::cout << Contract << std::endl;
+		std::cout << "\n---- FORM CREATION ----" << std::endl;
+		ShrubberyCreationForm shrub("Garden");
+		RobotomyRequestForm robot("Marvin");
+		PresidentialPardonForm pardon("Ford");
 
-		Peter.incrementGrade();
-		std::cout << Peter << std::endl;
-		Peter.signForm(Contract);
-		std::cout << Contract << std::endl;
-	}
-	catch (const std::exception& e) {
-		std::cerr << "Exception caught: " << e.what() << std::endl;
-	}
+		std::cout << "\n---- SIGNING FORMS ----" << std::endl;
+		boss.signForm(shrub);
+		employee.signForm(robot);
+		boss.signForm(pardon);
 
+		std::cout << "\n---- EXECUTING FORMS ----" << std::endl;
+		intern.executeForm(shrub);     // should fail (grade too low)
+		employee.executeForm(robot);   // should succeed sometimes
+		boss.executeForm(pardon);      // should succeed
+
+		std::cout << "\n---- EXECUTING UNSIGNED FORM ----" << std::endl;
+		PresidentialPardonForm notSigned("Unworthy");
+		boss.executeForm(notSigned);   // should fail (not signed)
+		std::cout << "\n ---- DELETING ----" << std::endl;
+
+	} catch (const std::exception& e) {
+		std::cerr << "Error caught in main: " << e.what() << std::endl;
+	}
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:11:44 by livsauze          #+#    #+#             */
-/*   Updated: 2025/04/28 16:03:14 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/05/01 18:45:52 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ AForm::AForm(const std::string name, const int gToSign, const int gToExecute)
 		throw GradeTooHighException();
 	else if ( gToSign > 150 || gToExecute > 150)
 		throw GradeTooHighException();
+	std::cout << "Form " << _name << " has been created" << std::endl;
 }
 AForm::AForm(const AForm& other) : _name(other._name), _signed(other._signed),
 	_gradeToSign(other._gradeToSign), _gradeToExecute(other._gradeToExecute)
@@ -39,7 +40,7 @@ AForm& AForm::operator=(const AForm& other)
 
 AForm::~AForm()
 {
-	std::cout << "Destructor has been called" << std::endl;
+	std::cout << "Deleting Form " << _name << std::endl;
 }
 
 std::string	AForm::getName() const
@@ -73,6 +74,14 @@ void	AForm::beSigned(Bureaucrat& b)
 		throw GradeTooLowException();
 }
 
+void	AForm::checkExecRequirements(const Bureaucrat& executor) const
+{
+	if (executor.getGrade() >= getGradeToEexecute())
+		throw GradeTooLowException();
+	else if (_signed == false)
+		throw FormNotSigned();
+}
+
 std::ostream& operator<<(std::ostream& output, const AForm& input)
 {
 	if (input.getSigned())
@@ -92,6 +101,11 @@ const char* AForm::GradeTooHighException::what(void) const throw()
 const char* AForm::GradeTooLowException::what(void) const throw()
 {
 	return ("The Grade is too Low");
+}
+
+const char* AForm::FormNotSigned::what(void) const throw()
+{
+	return ("AForm is not signed !");
 }
 
 const char* AForm::FormAlreadySigned::what(void) const throw()

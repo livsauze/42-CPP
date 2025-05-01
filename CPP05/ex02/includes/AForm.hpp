@@ -6,13 +6,16 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:10:54 by livsauze          #+#    #+#             */
-/*   Updated: 2025/04/28 16:10:29 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/05/01 18:39:05 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _AFORM_HPP
 #define _AFORM_HPP
 
+#include <fstream>
+#include <ostream>
+#include <cstdlib>
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
@@ -36,7 +39,9 @@ class AForm
 		int	getGradeToSign() const;
 		int	getGradeToEexecute() const;
 		
-		virtual void beSigned(Bureaucrat& b) const = 0;
+		virtual void beSigned(Bureaucrat& b);
+		void	checkExecRequirements(const Bureaucrat& executor) const;
+		virtual void execute(const Bureaucrat& executor) const = 0;
 		
 		class GradeTooHighException : public std::exception
 		{
@@ -44,6 +49,11 @@ class AForm
 				virtual const char* what(void) const throw();
 		};
 		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char* what(void) const throw();
+		};
+		class FormNotSigned : public std::exception
 		{
 			public:
 				virtual const char* what(void) const throw();
