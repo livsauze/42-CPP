@@ -6,7 +6,7 @@
 #    By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/25 12:24:58 by livsauze          #+#    #+#              #
-#    Updated: 2025/05/01 18:26:01 by livsauze         ###   ########.fr        #
+#    Updated: 2025/05/01 18:54:12 by livsauze         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ all : ${NAME}
 
 clean :
 	@rm -rf $(OBJS_DIR)
+	@rm -rf *_shrubbery
 	@echo "$(RED)Deleting object files\n"
 
 fclean : clean

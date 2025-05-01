@@ -6,7 +6,7 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 18:31:14 by livsauze          #+#    #+#             */
-/*   Updated: 2025/05/01 18:43:29 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/05/01 18:52:22 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	main()
 {
 	try {
 		Bureaucrat boss("Alice", 1); // grade max
-		Bureaucrat employee("Bob", 70);
+		Bureaucrat employee("John", 25);
+		Bureaucrat employee2("Bob", 70);
 		Bureaucrat intern("Charlie", 150); // grade min
 
 		std::cout << "\n---- FORM CREATION ----" << std::endl;
@@ -29,12 +30,14 @@ int	main()
 
 		std::cout << "\n---- SIGNING FORMS ----" << std::endl;
 		boss.signForm(shrub);
-		employee.signForm(robot);
+		employee.signForm(shrub);
+		employee2.signForm(robot);
 		boss.signForm(pardon);
 
 		std::cout << "\n---- EXECUTING FORMS ----" << std::endl;
 		intern.executeForm(shrub);     // should fail (grade too low)
-		employee.executeForm(robot);   // should succeed sometimes
+		employee.executeForm(shrub);   //should succeed and create a file
+		employee2.executeForm(robot);   // should succeed sometimes
 		boss.executeForm(pardon);      // should succeed
 
 		std::cout << "\n---- EXECUTING UNSIGNED FORM ----" << std::endl;
