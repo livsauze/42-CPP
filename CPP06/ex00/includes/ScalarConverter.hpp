@@ -6,15 +6,21 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 20:06:45 by livsauze          #+#    #+#             */
-/*   Updated: 2025/05/01 20:20:00 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/05/23 16:12:07 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCALAR_CONVERTER_HPP
 #define SCALAR_CONVERTER_HPP
 
-#include <string>
 #include <iostream>
+#include <string>
+#include <limits>
+#include <cstdlib>
+#include <cmath>
+#include <sstream>
+#include <cctype>
+#include <iomanip>
 
 class ScalarConverter
 {
@@ -24,7 +30,7 @@ class ScalarConverter
 		ScalarConverter& operator=(const ScalarConverter& other);
 		~ScalarConverter();
 	public:
-		static void convert(const std::string str);		
+		static void convert(const std::string& str);		
 };
 
 #endif
