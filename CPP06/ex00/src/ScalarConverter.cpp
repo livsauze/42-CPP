@@ -6,7 +6,7 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 20:18:42 by livsauze          #+#    #+#             */
-/*   Updated: 2025/05/23 18:50:57 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/05/27 14:49:23 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,14 @@ void	printInt(const std::string& str, bool isLimit)
 		std::cout << i << std::endl;
 		return;
 	}
-	else if (str.length() == 3 && !isdigit(str[1]))
+	else if (str.length() == 3 && str[0] == '\'' && str[2] == '\'')
 	{
 		int i = static_cast<int>(str[1]);
 		std::cout << i << std::endl;
 		return;
 	}
 	int i = atol(str.c_str());
-	if (i > INT_MAX || i < INT_MIN)
+	if (i > INT_MAX || i < INT_MIN || (i == 0 && str[0] != '0'))
 	{
 		std::cout << "impossible" << std::endl;
 		return ;
