@@ -6,118 +6,78 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 20:18:42 by livsauze          #+#    #+#             */
-/*   Updated: 2025/05/27 14:49:23 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/05/27 16:18:15 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-bool	isValidInput(std::string str)
-{
-	int	neg = 0;
-	int	f = 0;
-	int	d = 0;
-	size_t	i = 0;
-	
-	if (str[i] == '+' || str[i] == '-')
-	{
-		neg++;
-		i++;
-	}
-	for (; i < str.length(); i++)
-	{
-		if (neg > 1 || f > 1 || d > 1)
-			return false;
-		if (str[i] == '.')
-			d++;
-		else if (str[i] == 'f' || str[i] == 'F')
-			f++;
-		else if (str[i] == '+' || str[i] == '-')
-			neg++;
-		else if (!isprint(str[i]))
-			return false;
-	}
-	return true;
-}
-
-void	printChar(const std::string& str, bool isLimit)
-{
-	std::cout << "char : ";
-	if (isLimit || !isValidInput(str))
-	{
-		std::cout << "impossible" << std::endl;
-		return ;
-	}
-	if (str.length() == 1 && !std::isdigit(str[0]) && isprint(str[0]))
-	{
-		std::cout << "'" << str[0] << "'" << std::endl;
-		return;
-	}
-	else if (str.length() == 3 && str[0] == '\'' && str[2] == '\'')
-	{
-		std::cout << str << std::endl;
-		return;
-	}
-	char c = atoi(str.c_str());
-	if (isprint(c))
-		std::cout << "'" << c << "'" << std::endl;
-	else
-		std::cout << "Non displayable" << std::endl;
-	return;	
-}
-
-void	printInt(const std::string& str, bool isLimit)
-{
-	std::cout << "int : ";
-	if (str.empty() || !isValidInput(str))
-	{
-		std::cout << "impossible" << std::endl;
-		return ;
-	}
-	if (isLimit)
-	{
-		if (str[0] == 'n')
-			std::cout << "nan" << std::endl;
-		else if (str[0] == '+')
-			std::cout << "+inf" << std::endl;
-		else if (str[0] == '-')
-			std::cout << "-inf" << std::endl;
-		return;
-	}
-	if (str.length() == 1 && !isdigit(str[0])) {
-		int i = static_cast<int>(str[0]);
-		std::cout << i << std::endl;
-		return;
-	}
-	else if (str.length() == 3 && str[0] == '\'' && str[2] == '\'')
-	{
-		int i = static_cast<int>(str[1]);
-		std::cout << i << std::endl;
-		return;
-	}
-	int i = atol(str.c_str());
-	if (i > INT_MAX || i < INT_MIN || (i == 0 && str[0] != '0'))
-	{
-		std::cout << "impossible" << std::endl;
-		return ;
-	}
-	std::cout << static_cast<int>(i) << std::endl;
-	return;
-}
 
 void	ScalarConverter::convert(const std::string& str)
 {
-	std::string	limits[6] = {"+inff", "-inff", "nanf", "+inf", "-inf", "nan"};
-	bool		isLimit = false;
+	bool	isPseudoF = (str == "-inff" || str == "+inff" || str == "nanf");
+	bool	isPseudoD = (str == "-inf" || str == "+inf" || str == "nan");
+	char	*endPtr;
+	char	cval;
+	int		ival;
+	float	fval;
+	double	dval;
+	long	lval;
 	
-	for (int i = 0; i < 6; i++)
+	errno = 0;
+	if (isPseudoF || isPseudoD)
 	{
-		if (str == limits[i])
-		{
-			isLimit = true;
-			break;	
-		}
+		fval = std::strtof(str.c_str(), &endPtr);
+		dval = std::strtod(str.c_str(), &endPtr);
+		std::cout << "char : Impossible" << std::endl;
+		std::cout << "int : Impossible" << std::endl;
+		std::cout << "float : " << fval << "f" << std::endl;
+		std::cout << "double : " << dval << std::endl;
+		
 	}
-	printChar(str, isLimit);
-	printInt(str, isLimit);
+	// If char detected
+	if (str.length() == 1 && !isdigit(str[0]) && isprint(str[0]))
+	{
+		cval = str[0];
+		ival = static_cast<int>(cval);
+		fval = static_cast<float>(cval);
+		dval = static_cast<double>(cval);
+		std::cout << "char : '" << cval << "'" << std::endl;
+		std::cout << "int : '" << ival << "'" << std::endl;
+		std::cout << "float : '" << fval << "'" << std::endl;
+		std::cout << "double : '" << dval << "'" << std::endl;
+		return;
+	}
+	// Hadling simple quotes for char
+	else if (str.length() == 3 && str[0] == '\'' && isprint(str[1]))
+	{
+		cval = str[1];
+		ival = static_cast<int>(cval);
+		fval = static_cast<float>(cval);
+		dval = static_cast<double>(cval);
+		std::cout << "char : '" << cval << "'" << std::endl;
+		std::cout << "int : '" << ival << "'" << std::endl;
+		std::cout << "float : '" << fval << "'" << std::endl;
+		std::cout << "double : '" << dval << "'" << std::endl;
+	}
+	// If int detected
+	lval = str::strtol(str.c_str(), &endPtr, 10);
+	if (endPtr == '\0' && errno != ERANGE)
+	{
+		if (lval < INT_MIN || lval > INT_MAX)
+		{
+			std::cout << "char : Impossible" << std::endl;
+			std::cout << "int : Impossible" << std::endl;
+			std::cout << "float : Impossible" << std::endl;
+			std::cout << "double : Impossible" << std::endl;
+			return;
+		}
+		cval = static_cast<int>(lval);
+		ival = static_cast<int>(lval);
+		fval = static_cast<int>(lval);
+		dval = static_cast<int>(lval);
+		if (!isprint(cval))
+			std::cout << "char : Non displayable" << std::endl;
+		
+	}
 }
