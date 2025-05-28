@@ -6,18 +6,17 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 20:18:42 by livsauze          #+#    #+#             */
-/*   Updated: 2025/05/27 19:00:11 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/05/28 15:07:04 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-
 void	ScalarConverter::convert(const std::string& str)
 {
 	bool	isPseudoF = (str == "-inff" || str == "+inff" || str == "nanf");
 	bool	isPseudoD = (str == "-inf" || str == "+inf" || str == "nan");
-	char	*endPtr;
+	char	*endPtr = NULL;
 	char	cval;
 	int		ival;
 	float	fval;
@@ -33,7 +32,7 @@ void	ScalarConverter::convert(const std::string& str)
 		std::cout << "int : Impossible" << std::endl;
 		std::cout << "float : " << fval << "f" << std::endl;
 		std::cout << "double : " << dval << std::endl;
-		
+		return;
 	}
 	// If char detected
 	if (str.length() == 1 && !isdigit(str[0]) && isprint(str[0]))
@@ -102,9 +101,29 @@ void	ScalarConverter::convert(const std::string& str)
 				std::cout << "int : Impossible" << std::endl;
 			else
 				std::cout << "int : " << ival << std::endl;
-			std::cout << "float : " << fval << ".0f" << std::endl;
-			std::cout << "double : " << dval << ".0" << std::endl;
+			std::cout << std::fixed << std::setprecision(1) << "float : " << fval << "f" << std::endl;
+			std::cout << std::fixed << std::setprecision(1) << "double : " << dval << std::endl;
+			return;
 		}
+	}
+	// If double detected
+	dval = strtod(str.c_str(), &endPtr);
+	if (*endPtr == '\0' && errno != ERANGE)
+	{
+		ival = static_cast<int>(dval);
+		fval = static_cast<double>(dval);
+		cval = static_cast<char>(ival);
+		if (!isprint(cval))
+				std::cout << "char : Non displayable" << std::endl;
+		else
+			std::cout << "char : '" << cval << "'" << std::endl;
+		if (dval < static_cast<float>(INT_MIN) || dval > static_cast<float>(INT_MAX))
+			std::cout << "int : Impossible" << std::endl;
+		else
+			std::cout << "int : " << ival << std::endl;
+		std::cout << std::fixed << std::setprecision(1) << "float : " << fval << "f" << std::endl;
+		std::cout << std::fixed << std::setprecision(1) << "double : " << dval << std::endl;
+		return;
 	}
 		std::cout << "char : Impossible" << std::endl;
 		std::cout << "int : Impossible" << std::endl;
