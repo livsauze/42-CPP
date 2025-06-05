@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/06/05 15:41:37 by livsauze          #+#    #+#              #
-#    Updated: 2025/06/05 16:14:52 by livsauze         ###   ########.fr        #
+#    Created: 2025/06/05 16:15:12 by livsauze          #+#    #+#              #
+#    Updated: 2025/06/05 16:15:14 by livsauze         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ YELLOW = \033[33m
 GREEN = \033[92m
 #****************************************#
 
-NAME =  Template
+NAME =  Iter
 
 CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
