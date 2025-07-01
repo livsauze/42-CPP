@@ -6,7 +6,7 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:50:03 by livsauze          #+#    #+#             */
-/*   Updated: 2024/11/05 18:16:44 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/06/20 16:29:41 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,12 @@ DiamondTrap::~DiamondTrap()
 void	DiamondTrap::whoAmI()
 {
 	std::cout << "My name is " << _name << " while my other name is " << ClapTrap::_name << std::endl;
+}
+
+void	DiamondTrap::getStatus()
+{
+	std::cout << "DiamondTrap " << _name << std::endl;
+	std::cout << "Hitpoint " << _hitPoint << std::endl;
+	std::cout << "energy point " << _energyPoint << std::endl;
+	std::cout << std::endl;	
 }

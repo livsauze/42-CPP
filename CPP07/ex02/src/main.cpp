@@ -6,54 +6,52 @@
 /*   By: livsauze <livsauze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 15:43:01 by livsauze          #+#    #+#             */
-/*   Updated: 2025/06/05 17:13:05 by livsauze         ###   ########.fr       */
+/*   Updated: 2025/07/01 14:41:25 by livsauze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Array.hpp"
 
-template <typename T>
-void	print(const T& something)
-{
-	std::cout << something << " ";
-}
-template <typename T>
-void	increment(T& something)
-{
-	something += 1;
-}
+int	main() {
 
-int main( void )
-{
-	int arrayI[] = {1, 2, 3, 4, 42};
-	std::cout << "int array : ";
-	iter(arrayI, 5, print<int>);
-	std::cout << std::endl;
-	std::cout << "incrementing the array : ";
-	iter(arrayI, 5, increment<int>);
-	iter(arrayI, 5, print<int>);
-	std::cout << std::endl;
-	std::cout << std::endl;
+	try
+	{
+		std::cout << "Testing INT Array : " << std::endl;
+		Array<int> intArrayEmpty;
+		Array<int> intArray((5));
+		
+		for (size_t i = 0; i < intArray.size(); i++)
+		{
+			intArray[i] = 42;
+		}
+		std::cout << "Array1 (empty)'s size is " << intArrayEmpty.size() << std::endl;
+		std::cout << "Array2's size is " << intArray.size() << std::endl;
+		std::cout << "What's inside ?" << std::endl;
+		for (size_t i = 0; i < intArray.size(); i++)
+		{
+			std::cout << intArray[i] << " - ";
+		}
 
-	double arrayD[] = {1.1, 2.1, 3.1, 4.1, 42.1};
-	std::cout << "double array : ";
-	iter(arrayD, 5, print<double>);
-	std::cout << std::endl;
-	std::cout << "incrementing the array : ";
-	iter(arrayD, 5, increment<double>);
-	iter(arrayD, 5, print<double>);
-	std::cout << std::endl;
-	std::cout << std::endl;
+		std::cout << std::endl;
+		std::cout << std::endl;
+		std::cout << "Testing string Array : " << std::endl;
+		Array<std::string> stringArray(3);
+		stringArray[0] = "Hello ";
+		stringArray[1] = "World ";
+		stringArray[2] = "!\n";
 
-	char arrayC[] = "hello";
-	std::cout << "char array : ";
-	iter(arrayC, 5, print<char>);
-	std::cout << std::endl;
-	std::cout << std::endl;
+		std::cout << "String Array's size is " << stringArray.size() << std::endl;
+		for (unsigned int i = 0; i < stringArray.size(); i++) {
+			std::cout << stringArray[i] << " ";
+		}
+		
+		std::cout << stringArray[3] << std::endl;
 
-	const std::string strArray[] = {"Hello World", "Hola"};
-	std::cout << "const string array : ";
-	iter(strArray, 2, print<std::string>);
-	std::cout << std::endl;
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	
 	return 0;
 }
